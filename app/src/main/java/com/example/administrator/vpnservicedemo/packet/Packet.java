@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Packet {
 
     protected byte[] data;
-    private int offset;
+    protected int offset;
     public Packet(byte[] data ,int offset){
         this.data = data;
         this.offset = offset;

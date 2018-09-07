@@ -3,15 +3,12 @@ package com.example.administrator.vpnservicedemo;
 import android.content.Intent;
 import android.net.VpnService;
 import android.os.ParcelFileDescriptor;
-import android.util.Log;
 
-import com.example.administrator.vpnservicedemo.packet.IPPacket;
-import com.example.administrator.vpnservicedemo.packet.TcpPacket;
+import com.example.administrator.vpnservicedemo.packet.PacketHandler;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 
 public class MyVPNService extends VpnService {
     public static final String TAG = "yangge'packet:  ";
@@ -56,14 +53,10 @@ public class MyVPNService extends VpnService {
         while (true){
             try {
                 int length = in.read(packet.array());
+
                 if(length > 0){
 //                    Log.i(TAG, new String (packet.array()));//乱码
-                    IPPacket ipPacket = new IPPacket(packet.array());
-                    TcpPacket tcpPacket = (TcpPacket) ipPacket.mPacket;
-                    Log.i(TAG, Arrays.toString(packet.array()));
-                    Log.i(TAG, ipPacket.getHeader());
-                    Log.i(TAG,tcpPacket.getHeader() );
-
+                    PacketHandler packetHandler = new PacketHandler(packet.array(),0);
                     packet.clear();
                 }
             } catch (IOException e) {
