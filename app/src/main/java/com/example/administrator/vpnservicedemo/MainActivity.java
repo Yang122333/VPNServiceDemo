@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "result: ";
     MyPresenter myPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == MyPresenter.VPN_START){
+        if (requestCode == MyPresenter.VPN_START) {
             //do something
             myPresenter.startVpn();
         }

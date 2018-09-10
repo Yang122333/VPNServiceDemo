@@ -6,14 +6,16 @@ public class Packet {
 
     protected byte[] data;
     protected int offset;
-    public Packet(byte[] data ,int offset){
+
+    public Packet(byte[] data, int offset) {
         this.data = data;
         this.offset = offset;
     }
 
     /**
-     *一开始打算直接返回数据部分后来发现在构
-     // 造函数的时候无法获取头部长度，只有在IPpacket构造函数中的才能获取ip的头部长度
+     * 一开始打算直接返回数据部分后来发现在构
+     * // 造函数的时候无法获取头部长度，只有在IPpacket构造函数中的才能获取ip的头部长度
+     *
      * @return data
      * // 返回数据部分//
      */
@@ -21,6 +23,6 @@ public class Packet {
     public String toString() {
 //        byte[] mdata =new byte[data.length-offset]; //
 //        System.arraycopy(data,offset,mdata,0,data.length-offset);
-       return Arrays.toString(data);
+        return Arrays.toString(data);
     }
 }
